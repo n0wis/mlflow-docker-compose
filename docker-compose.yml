@@ -37,7 +37,7 @@ services:
         image: postgres:latest
         container_name: mlflow_db
         ports:
-            - "3306:3306"
+            - "5432:5432"
         environment:
             - POSTGRES_DATABASE=${MYSQL_DATABASE}
             - POSTGRES_USER=${MYSQL_USER}
@@ -60,7 +60,7 @@ services:
             - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
             - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
             - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-        command: mlflow server --backend-store-uri postgresql+psycopg://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE} --default-artifact-root s3://mlflow/ --host 0.0.0.0
+        command: mlflow server --backend-store-uri postgresql+psycopg://${MYSQL_USER}:${MYSQL_PASSWORD}@db:5432/${MYSQL_DATABASE} --default-artifact-root s3://mlflow/ --host 0.0.0.0
 
 volumes:
     dbdata:
