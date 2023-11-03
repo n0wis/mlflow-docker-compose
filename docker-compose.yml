@@ -39,7 +39,7 @@ services:
         ports:
             - "5432:5432"
         environment:
-            - POSTGRES_DATABASE=${MYSQL_DATABASE}
+            - POSTGRES_DB=${MYSQL_DATABASE}
             - POSTGRES_USER=${MYSQL_USER}
             - POSTGRES_PASSWORD=${MYSQL_PASSWORD}
             - POSTGRES_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
