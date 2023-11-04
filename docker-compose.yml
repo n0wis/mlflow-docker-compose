@@ -59,7 +59,7 @@ services:
             - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
             - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
             - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-        command: mlflow server --backend-store-uri postgresql+psycopg2://${MYSQL_USER}:${MYSQL_PASSWORD}@db:5432/ --artifacts-destination s3://mlflow/ --host 0.0.0.0 --app-name basic-auth
+        command: mlflow server --backend-store-uri postgresql+psycopg2://${MYSQL_USER}:${MYSQL_PASSWORD}@db:5432/ --artifacts-destination s3://mlflow/ --serve-artifacts --host 0.0.0.0 --app-name basic-auth
 
 volumes:
     dbdata:
