@@ -3,7 +3,7 @@ version: '3.7'
 services:
     minio:
         restart: always
-        image: minio/minio@sha256:06ea25f726956f5b99b3bab737fd44bcb765df33b471e11f141eea9ecbacb33a
+        image: minio/minio
         container_name: mlflow_s3
         ports:
             - "9000:9000"
@@ -16,7 +16,7 @@ services:
             - minio_data:/data
 
     mc:
-        image: minio/mc@sha256:b178aa4a06629da24c87b379fa4947b44a15568dd6e205df714391c5f908195b
+        image: minio/mc
         depends_on:
             - minio
         container_name: mc
@@ -59,7 +59,7 @@ services:
             - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
             - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
             - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-        command: mlflow server --backend-store-uri postgresql+psycopg2://${MYSQL_USER}:${MYSQL_PASSWORD}@db:5432/ --default-artifact-root s3://mlflow/ --host 0.0.0.0 --app-name basic-auth
+        command: mlflow server --backend-store-uri postgresql+psycopg2://${MYSQL_USER}:${MYSQL_PASSWORD}@db:5432/ --artifacts-destination s3://mlflow/ --host 0.0.0.0 --app-name basic-auth
 
 volumes:
     dbdata:
