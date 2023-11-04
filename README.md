@@ -1,7 +1,7 @@
 # MLflow On-Premise Deployment using Docker Compose
 Easily deploy an MLflow tracking server with 1 command.
 
-MinIO S3 is used as the artifact store and MySQL server is used as the backend store.
+MinIO S3 is used as the artifact store and Postgresql is used as the backend store.
 
 ## How to run
 
